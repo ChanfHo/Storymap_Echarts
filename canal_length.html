@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>我国部分运河长度</title>
+  <script src="https://fastly.jsdelivr.net/npm/echarts@5"></script>
+</head>
+<body style="margin:0">
+  <div id="main" style="width: 100vw; height: 100vh;"></div>
+  <script>
+    var chart = echarts.init(document.getElementById('main'));
+    var option = {
+      title: {
+        text: '我国部分运河长度',
+        left: 'center'
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' }
+      },
+      legend: {
+        data: ['Ⅰ级航道', 'Ⅱ级航道','Ⅲ级航道'],
+        top: 30
+      },
+      grid: {
+        left: '5%',
+        right: '5%',
+        bottom: '5%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        data: ['京杭运河苏北段', '江淮运河', '江汉运河','平陆运河']
+      },
+      yAxis: {
+        type: 'value',
+        name: '千米'
+      },
+      series: [
+        {
+          name: 'Ⅰ级航道',
+          type: 'bar',
+          stack: 'total',
+          emphasis: { focus: 'series' },
+          data: [0, 0, 0,134.2]
+        },
+        {
+          name: 'Ⅱ级航道',
+          type: 'bar',
+          stack: 'total',
+          emphasis: { focus: 'series' },
+          data: [404, 186, 0,0]
+        },
+        {
+          name: 'Ⅲ级航道',
+          type: 'bar',
+          stack: 'total',
+          emphasis: { focus: 'series' },
+          data: [0, 169, 67.22,0]
+        }
+      ]
+    };
+    chart.setOption(option);
+  </script>
+</body>
+</html>

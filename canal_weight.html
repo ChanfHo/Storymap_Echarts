@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>我国部分运河运载量</title>
+  <script src="https://fastly.jsdelivr.net/npm/echarts@5"></script>
+</head>
+<body style="margin:0">
+  <div id="main" style="width: 100vw; height: 100vh;"></div>
+  <script>
+    var chart = echarts.init(document.getElementById('main'));
+    var option = {
+      title: {
+        text: '我国部分运河运载量',
+        left: 'center'
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' }
+      },
+      legend: {
+        data: ['理论最大运载量'],
+        top: 30
+      },
+      grid: {
+        left: '5%',
+        right: '5%',
+        bottom: '5%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        data: ['京杭运河苏北段', '江淮运河', '江汉运河','平陆运河']
+      },
+      yAxis: {
+        type: 'value',
+        name: '万吨'
+      },
+      series: [
+        {
+          name: '理论最大运载量',
+          type: 'bar',
+          stack: 'total',
+          emphasis: { focus: 'series' },
+          data: [50000, 15000, 1700,17800]
+        }
+      ]
+    };
+    chart.setOption(option);
+  </script>
+</body>
+</html>
