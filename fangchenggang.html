@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <!-- 添加视口标签确保响应式 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- 防止 iframe 安全限制 -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <title>各级航道里程对比图</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    #main {
+      width: 100%;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 图表容器 -->
+  <div id="main"></div>
+
+  <!-- 引入 ECharts -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+
+  <!-- 图表配置 -->
+  <script>
+    var chartDom = document.getElementById('main');
+    var myChart = echarts.init(chartDom);
+
+    var option = {
+        title: {
+            text: '防城港港至广西内陆典型地市运输费用比较',
+            left:'center',
+            top:0
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: ['经平陆运河水运', '铁路运输', '公路运输'],
+            top:30
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            top: '10%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+            saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: true,
+            data: ['防城港港-南宁', '防城港港-百色', '防城港港-贵港', '防城港港-柳州'],
+            axisLabel:{color:'black'}
+        },
+        yAxis: {
+            type: 'value',
+            name: '元/吨',
+            nameTextStyle:{color:'black'},
+            axisLabel:{color:'black'},
+            min:0,
+            max:250
+        },
+        series: [
+            {
+            name: '经平陆运河水运',
+            type: 'line',
+            data: [56, 95, 57, 72],
+            label: {
+                show: true,
+                position: 'bottom',
+                color: 'black'
+            }
+            },
+            {
+            name: '铁路运输',
+            type: 'line',
+            data: [75, 109, 92, 106],
+            label: {
+                show: true,
+                position: 'top',
+                color: 'black'
+            }
+            },
+            {
+            name: '公路运输',
+            type: 'line',
+            data: [115, 190, 176, 222],
+            label: {
+                show: true,
+                position: 'top',
+                color: 'black'
+            }
+            }
+        ]
+        
+    };
+
+    myChart.setOption(option);
+  </script>
+</body>
+</html>
